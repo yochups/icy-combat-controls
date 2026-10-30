@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8.5",
+  "package": "compat.icycombatcontrols.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "icy_combat_controls.refmap.json",
+  "mixins": [],
+  "server": [
+    "AbstractHorseServerMixin"
+  ],
+  "client": [
+    "AbstractHorseClientMixin",
+    "HorseAutodriveControllerMixin",
+    "HorseGearControllerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
