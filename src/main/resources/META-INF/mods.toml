@@ -46,3 +46,10 @@ mandatory=false
 versionRange="[1.20-2.5.11,)"
 ordering="AFTER"
 side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="magistuarmory"
+mandatory=false
+versionRange="[0,)"
+ordering="AFTER"
+side="BOTH"

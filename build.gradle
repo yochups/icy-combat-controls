@@ -83,6 +83,12 @@ dependencies {
         runtimeOnly fg.deobf('maven.modrinth:moonlight:1.20-2.16.38B-forge')
     }
 
+    if (!project.hasProperty('withoutEpicKnights')) {
+        runtimeOnly fg.deobf('maven.modrinth:L6jvzao4:gJ59URg4')
+        runtimeOnly fg.deobf('maven.modrinth:architectury-api:9.2.14+forge')
+        runtimeOnly fg.deobf('maven.modrinth:cloth-config:11.1.136+forge')
+    }
+
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
     testImplementation platform('org.junit:junit-bom:5.10.2')

@@ -13,6 +13,7 @@ public final class IcyCombatControls {
 
     public IcyCombatControls() {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, IcyCombatControlsConfig.SPEC);
+        MinecraftForge.EVENT_BUS.addListener(HorseInteractionEvents::onMount);
 
         if (ModList.get().isLoaded("supplementaries")) {
             MinecraftForge.EVENT_BUS.addListener(SupplementariesCompat::addHorseFeature);
