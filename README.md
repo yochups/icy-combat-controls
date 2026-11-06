@@ -48,3 +48,5 @@ Epic Knights attaches its caparison/banner-pattern layer only to vanilla `HorseR
 5. Honors Better Horses' first-person horse transparency.
 
 Epic Knights remains optional and none of its Java classes are linked by the addon.
+
+yes i generated this segment with ai because i am a programmer and i dont code so i have to write documentation later
