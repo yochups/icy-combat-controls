@@ -15,9 +15,16 @@ public final class HorseInteractionEvents {
             return;
         }
 
-        if (event.isDismounting()
-                && event.getEntityMounting() instanceof Player player
-                && event.getEntityBeingMounted() instanceof AbstractHorse) {
+        if (!(event.getEntityMounting() instanceof Player player)
+                || !(event.getEntityBeingMounted() instanceof AbstractHorse horse)) {
+            return;
+        }
+
+        if (IcyCombatControlsConfig.RESET_THROTTLE_ON_MOUNT_OR_DISMOUNT.get()) {
+            HorseThrottleAccess.reset(horse);
+        }
+
+        if (event.isDismounting()) {
             player.setDeltaMovement(Vec3.ZERO);
             player.hurtMarked = true;
         }

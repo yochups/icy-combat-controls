@@ -4,6 +4,9 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 public final class IcyCombatControlsConfig {
     public static final ForgeConfigSpec SPEC;
+    public static final ForgeConfigSpec.BooleanValue FACE_HORSE_DIRECTION_ON_MOUNT;
+    public static final ForgeConfigSpec.BooleanValue RESET_THROTTLE_ON_MOUNT_OR_DISMOUNT;
+    public static final ForgeConfigSpec.BooleanValue RESET_THROTTLE_ON_REAR;
     public static final ForgeConfigSpec.BooleanValue HORSE_ENCUMBRANCE;
     public static final ForgeConfigSpec.DoubleValue HORSE_ENCUMBRANCE_MULTIPLIER;
     public static final ForgeConfigSpec.BooleanValue INCLUDE_CART_STORAGE;
@@ -11,6 +14,19 @@ public final class IcyCombatControlsConfig {
 
     static {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
+        builder.push("horse_combat_controls");
+
+        FACE_HORSE_DIRECTION_ON_MOUNT = builder
+                .comment("Turn the rider to the horse's horizontal facing direction on mount instead of turning the horse.")
+                .define("face_horse_direction_on_mount", true);
+        RESET_THROTTLE_ON_MOUNT_OR_DISMOUNT = builder
+                .comment("Reset the addon and Horse Combat Controls movement throttles when mounting or dismounting a horse.")
+                .define("reset_throttle_on_mount_or_dismount", true);
+        RESET_THROTTLE_ON_REAR = builder
+                .comment("Reset the addon and Horse Combat Controls movement throttles when a ridden horse rears.")
+                .define("reset_throttle_on_rear", true);
+
+        builder.pop();
         builder.push("supplementaries");
 
         HORSE_ENCUMBRANCE = builder

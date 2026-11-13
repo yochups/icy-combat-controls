@@ -1,6 +1,8 @@
 package compat.icycombatcontrols;
 
 import compat.icycombatcontrols.compat.supplementaries.SupplementariesCompat;
+import compat.icycombatcontrols.compat.betterhorses.BetterHorsesStatCaps;
+import compat.icycombatcontrols.compat.betterhorses.BetterHorsesStatCapsConfig;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -13,7 +15,9 @@ public final class IcyCombatControls {
 
     public IcyCombatControls() {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, IcyCombatControlsConfig.SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, BetterHorsesStatCapsConfig.SPEC);
         MinecraftForge.EVENT_BUS.addListener(HorseInteractionEvents::onMount);
+        MinecraftForge.EVENT_BUS.addListener(BetterHorsesStatCaps::addHorseFeature);
 
         if (ModList.get().isLoaded("supplementaries")) {
             MinecraftForge.EVENT_BUS.addListener(SupplementariesCompat::addHorseFeature);

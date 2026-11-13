@@ -1,6 +1,7 @@
 package compat.icycombatcontrols.mixin;
 
 import compat.icycombatcontrols.CombatMode;
+import compat.icycombatcontrols.HorseThrottleAccess;
 import compat.icycombatcontrols.ThrottleMath;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -17,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value = AbstractHorse.class, priority = 2000)
-public abstract class AbstractHorseServerMixin extends LivingEntity {
+public abstract class AbstractHorseServerMixin extends LivingEntity implements HorseThrottleAccess {
     @Shadow protected float playerJumpPendingScale;
     @Shadow protected boolean allowStandSliding;
     @Shadow public abstract boolean isStanding();
@@ -26,6 +27,12 @@ public abstract class AbstractHorseServerMixin extends LivingEntity {
 
     protected AbstractHorseServerMixin(EntityType<? extends LivingEntity> type, Level level) {
         super(type, level);
+    }
+
+    @Override
+    @Unique
+    public void icyCombatControls$resetThrottle() {
+        icyCombatControls$throttle = 0.0D;
     }
 
     @Inject(method = "getRiddenRotation", at = @At("HEAD"), cancellable = true)
